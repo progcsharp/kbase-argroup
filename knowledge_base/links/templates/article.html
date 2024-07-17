@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+ {% load static %}
+
+<main>
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<a href="search.html">Статьи</a> / <span>{{article.name}}</span>
+			</div>
+		</div>
+
+		<section class="article">
+			<div class="container">
+				<div class="article__inner">
+
+					<div class="article__content-info">
+						<img src="{{article.img.url}}" alt="" class="">
+						<div class="article__content-info-text">
+							<h1>{{article.name}}</h1>
+							<p>{{article.description}}</p>
+						</div>
+					</div>
+
+					<div class="article__content-tags">
+                     {% for tag in article.tags.all%}
+						<div class="filter__tag">
+							<span>{{tag.name}}</span>
+						</div>
+						{%endfor%}
+					</div>
+
+					<div class="article__content-author">
+						<p>Автор: <span>{{article.author.get_full_name}}</span></p>
+						<p><span>{{article.author.get_position}}</span></p>
+					</div>
+
+
+				</div>
+			</div>
+		</section>
+
+		<section class="article__content">
+			<div class="container">
+				<div class="article__content-inner">
+
+					{{article.article|safe}}
+
+					{% if article.files %}
+					<a class="download__button" href="{{article.files.url}}" download="{{article.files.name}}" target='_blank'>Скачать файл</a>
+					{%endif%}
+
+				</div>
+			</div>
+		</section>
+</main>
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{% endblock %}

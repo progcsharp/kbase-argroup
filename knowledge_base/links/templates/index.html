@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+ {% load static %}
+    <main>
+
+		<section class="offer">
+			<div class="container">
+				<div class="offer__inner">
+					<div class="offer__inner-text">
+						<h1>БАЗА ЗНАНИЙ КОМПАНИИ AR-GROUP</h1>
+						<p>Повышай свои навыки вместе с нашей командой</p>
+					</div>
+					<img src="{% static 'img/offer__img.svg'%}" alt="">
+				</div>
+			</div>
+		</section>
+
+
+		<section class="knowledge-base">
+			<div class="container">
+				<div class="knowledge-base__inner">
+					<form action="{% url 'search' %}" method="post">{% csrf_token %}
+						<div>
+						    <label for="id_name">Поиск:</label>
+							<input type="text" name="name" maxlength="2500" id="id_name">
+							<button type="submit">
+	                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+	                                <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#fff" stroke-width="1.5"></path>
+	                                <path d="M18.5 18.5L22 22" stroke="#fff" stroke-width="1.5" stroke-linecap="round"></path>
+	                            </svg>
+	                            <span>Найти</span>
+                       		</button>
+						</div>
+
+						<div class="filter__tags">
+							{% for tag in tags %}
+							<div class="filter__tag">
+								<input name="{{ tag.id }}" type="checkbox">
+								<span>{{ tag.name }}</span>
+							</div>
+							{% endfor %}
+
+						</div>
+
+					</form>
+					<div class="response__items">
+						{% if data %}
+						{% for d in data%}
+						<articles class="response__item">
+							<a href="{% url 'article' d.id %}"></a>
+							<img src="{{d.img.url}}"/>
+							<div class="response__item-info">
+								<h2>{{d.name}}</h2>
+								<p>{{d.description}}</p>
+								<div class="response__item-tags">
+									{%for tag in d.tags.all%}
+									<div class="filter__tag">
+										<span>{{tag.name}}</span>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</articles>
+						{%endfor%}
+						{%endif%}
+
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+{% endblock %}

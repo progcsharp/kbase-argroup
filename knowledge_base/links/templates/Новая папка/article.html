@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Document</title>
+</head>
+<body>
+
+	<header class="header">
+		<div class="container">
+			<div class="header__inner">
+				<a href="index.html">AR-GROUP</a>
+				<span>БАЗА ЗНАНИЙ</span>
+			</div>
+		</div>
+	</header>
+
+	<main>
+
+		<div class="breadcrumbs">
+			<div class="container">
+				<a href="search.html">Статьи</a> / <span>Начало работы с WordPress</span>
+			</div>			
+		</div>
+
+		<section class="article">
+			<div class="container">
+				<div class="article__inner">
+
+					<div class="article__content-info">
+						<img src="img/card1.jpg" alt="" class="">
+						<div class="article__content-info-text">
+							<h1>Начало работы с WordPress</h1>
+							<p>Инструкция как начать работу с CMS системой Wordpress. В этой статье расскажем создать стартовый шаблон.</p>
+						</div>
+					</div>
+
+					<div class="article__content-tags">
+						<div class="filter__tag">
+							<span>#IT</span>
+						</div>
+						<div class="filter__tag">
+							<span>#WordPress</span>
+						</div>
+						<div class="filter__tag">
+							<span>#CMS</span>
+						</div>
+						<div class="filter__tag">
+							<span>#PHP</span>
+						</div>
+					</div>
+
+					<div class="article__content-author">
+						<p>Автор: <span>Мкртчян Оганес</span></p>
+						<p><span>Frontend-разрабочик</span></p>
+					</div>
+
+
+				</div>
+			</div>
+		</section>
+
+
+		<section class="article__content">
+			<div class="container">
+				<div class="article__content-inner">
+					
+					<h2>Что такое WordPress</h2>
+
+					<p><strong>WordPress</strong> (WP) ― это система управления содержимым сайта (CMS) с открытым исходным кодом.</p>
+					<p>Самым популярным на данный момент способом создания сайта является именно CMS. CMS (Content Management System) ― это система создания и управления сайтом. Простыми словами, это программа с удобным интерфейсом для создания веб-ресурса. В ней можно использовать код, но это необязательно. Благодаря такой технологии все желающие могут создать себе страничку.</p>
+
+					<p>Что нужно знать, чтобы работать с этой CMS? Программа не требует знания кода. Достаточно только зайти в админку и немного познакомиться с интерфейсом.</p>
+
+					<p>Опытным разработчикам WP даёт возможность использовать PHP. Так как эта CMS с открытым исходным кодом, интерфейс можно модернизировать и сделать для себя ещё удобнее.</p>
+
+					<br>
+					<br>
+					<br>
+					
+
+					<h2>Плюсы и минусы WordPress</h2>
+
+					<p>Как и любая программа она имеет плюсы и минусы.</p>
+
+					<br>
+
+					<h3>Преимущества</h3>
+
+					<ul>
+						<li><strong>Бесплатная платформа.</strong> CMS WordPress полностью бесплатна. Вы платите только за домен и хостинг (или VPS), где будут храниться файлы вашего сайта. Программное обеспечение и плагины чаще всего тоже бесплатные.</li>
+
+						<li><strong>Открытый исходный код.</strong> Вам не нужно будет платить за программное обеспечение WordPress.</li>
+
+						<li><strong>Лёгкость в управлении.</strong> Вам не нужны знания программирования для таких ежедневных задач, как написание и редактирование публикаций, загрузка и редактирование изображений, установка плагинов.</li>
+					</ul>
+
+
+
+					<br>
+					<br>
+					<br>
+
+
+					<h2>Установка OpenServer</h2>
+
+					<p>Вначале нам необходимо скачать локальный сервер на котором сможем вести разработку наших будущих сайтов. Одним из популярных вариантов является <a href="https://ospanel.io/">OpenServer</a>.</p>
+
+					<p>После загрузки требуется выполнить начальную настройку сервера. У меня на данный момент стоит следующая конфигурация:</p>
+
+					<img src="img/screen1.png" alt="">
+
+
+					<br>
+					<br>
+					<br>
+
+
+					<h2>Повторитель ACF</h2>
+
+					<p>Повторитель в плагине ACF является мощным инструментом для работы с CMS WordPress</p>
+
+					<P>Для вывода записей полей типа "Повторитель" требуется использовать следующий код PHP"</P>
+
+<xmp>
+<?php
+
+// проверяем есть ли в повторителе данные
+if( have_rows('repeater_field_name') ):
+
+ 	// перебираем данные
+    while ( have_rows('repeater_field_name') ) : the_row();
+
+        // отображаем вложенные поля
+        the_sub_field('sub_field_name');
+
+    endwhile;
+
+else :
+
+    // вложенных полей не найдено
+
+endif;
+
+?>
+
+</xmp>
+
+				<br>
+				<br>
+				<br>
+
+
+				<h2>Шаблон страницы WordPress</h2>
+
+				<p>Мною уже разработан стартовый шаблон страницы WoprdPess. Вы можете скачать файл и использвовать его в своих проектах</p>
+
+				<br>
+
+				<a class="download__button" href="files/screen1.png" download="screen1" target='_blank'>Скачать файл</a>
+
+
+				</div>
+			</div>
+		</section>
+
+		
+	</main>
+
+
+
+	
+
+</body>
+
+</html>
